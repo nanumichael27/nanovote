@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('id')->nullable();
+            $table->string('code')->nullable();
             $table->enum('role', ['admin', 'voter'])->default('voter');
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
