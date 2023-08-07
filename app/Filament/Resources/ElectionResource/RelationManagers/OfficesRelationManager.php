@@ -5,6 +5,7 @@ namespace App\Filament\Resources\ElectionResource\RelationManagers;
 use Filament\Forms;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
@@ -32,14 +33,17 @@ class OfficesRelationManager extends RelationManager
                 ->relationship()
                 ->schema([
                     Forms\Components\TextInput::make('first_name')
-                        ->required()
+                        ->nullable()
                         ->maxLength(255),
                     Forms\Components\TextInput::make('last_name')
-                        ->required()
+                        ->nullable()
                         ->maxLength(255),
                     Forms\Components\TextInput::make('part')
                         ->nullable()
                         ->maxLength(255),
+                    SpatieMediaLibraryFileUpload::make('picture')
+                    ->multiple(false)
+                    ->collection('images'),
                 ])
                ])
             ]);
