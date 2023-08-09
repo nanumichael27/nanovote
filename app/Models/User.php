@@ -62,4 +62,14 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->belongsToMany(Candidate::class, 'votes', 'voter_id', 'candidate_id');
     }
+
+    /**
+     * Election
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function election()
+    {
+        return $this->belongsTo(Election::class);
+    }
 }

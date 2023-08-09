@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('election_id')
+            ->nullable()
+            ->constrained('elections')
+            ->onDelete('cascade');
             $table->string('name')->nullable();
             $table->string('code')->nullable();
             $table->enum('role', ['admin', 'voter'])->default('voter');

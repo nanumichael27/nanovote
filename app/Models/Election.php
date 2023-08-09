@@ -26,4 +26,15 @@ class Election extends Model
     {
         return $this->hasMany(Office::class);
     }
+
+    /**
+     * Voters
+     * one to many
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function voters()
+    {
+        return $this->hasMany(User::class, 'election_id');
+    }
 }
