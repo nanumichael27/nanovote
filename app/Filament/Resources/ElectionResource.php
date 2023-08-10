@@ -5,7 +5,9 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ElectionResource\Pages;
 use App\Filament\Resources\ElectionResource\RelationManagers;
 use App\Filament\Resources\ElectionResource\RelationManagers\OfficesRelationManager;
+use App\Filament\Resources\ElectionResource\RelationManagers\VotersRelationManager;
 use App\Models\Election;
+use Filament\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -50,6 +52,9 @@ class ElectionResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                // Action::make('Generate Voters')
+                // ->requiresConfirmation()
+                // ->action(fn (Election $election) => $election->generateVoters(10)),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -66,6 +71,7 @@ class ElectionResource extends Resource
         return [
             //
             OfficesRelationManager::class,
+            VotersRelationManager::class,
         ];
     }
     
@@ -76,5 +82,6 @@ class ElectionResource extends Resource
             'create' => Pages\CreateElection::route('/create'),
             'edit' => Pages\EditElection::route('/{record}/edit'),
         ];
-    }    
+    }  
+    
 }
