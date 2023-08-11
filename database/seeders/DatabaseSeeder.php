@@ -20,11 +20,11 @@ class DatabaseSeeder extends Seeder
         $admins = [
             [
                 'name' => 'Oghenetega Nanu',
-                'email' => 'nanumicahael27@gmail.com',
+                'email' => 'nanumichael27@gmail.com',
                 'role' => 'admin',
                 'code' => '',
                 'email_verified_at' => now(),
-                'password' => Hash::make('nanumicahael27@gmail.com')
+                'password' => Hash::make('nanumichael27@gmail.com')
             ],
             [
                 'name' => 'aigbokhanfrances@gmail.com',
