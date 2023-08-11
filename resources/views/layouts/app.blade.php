@@ -11,8 +11,27 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script>
+            window.addEventListener('alert', event => { 
+                console.log(event.detail[0].message);
+                         toastr[event.detail[0].type](event.detail[0].message, 
+                         event.detail[0].title ?? ''), toastr.options = {
+                                "closeButton": true,
+                                "progressBar": true,
+                            }
+                        });
+            </script>
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <style>
+            [x-cloak] {
+                display: none !important;
+            }
+        </style>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

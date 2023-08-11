@@ -74,4 +74,15 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->belongsTo(Election::class);
     }
+
+    /**
+     * Has Voted
+     * 
+     * @param Election $election
+     * @return bool
+     */
+    public function hasVoted(Election $election)
+    {
+        return $this->votes? true : false;
+    }
 }
