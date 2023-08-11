@@ -36,7 +36,7 @@ Route::middleware('guest')->group(function () {
     //             ->name('password.store');
     
     Route::get('voter-login', [VoterAuthenticationController::class, 'view'])
-                ->name('voter.login.view');
+                ->name('login');
 
     Route::post('voter-login-post', [VoterAuthenticationController::class, 'login'])
     ->name('voter.login');
