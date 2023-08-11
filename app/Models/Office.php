@@ -37,4 +37,17 @@ class Office extends Model
     {
         return $this->hasMany(Candidate::class);
     }
+
+    /**
+     * Votes attribute
+     * 
+     */
+    public function getVotesAttribute()
+    {
+        $votes = 0;
+        foreach ($this->candidates as $candidate) {
+            $votes += $candidate->votes->count();
+        }
+        return $votes;
+    }
 }

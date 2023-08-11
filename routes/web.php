@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Livewire\Results;
 use App\Models\Election;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,8 @@ Route::get('/codes/{id}', function($id){
     $pdf = Pdf::loadView('codes', compact('voters'));
     return $pdf->download('codes.pdf');
 })->name('codes.download');
+
+Route::get('/results/{election}', Results::class)->name('results');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

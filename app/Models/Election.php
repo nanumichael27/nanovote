@@ -37,4 +37,19 @@ class Election extends Model
     {
         return $this->hasMany(User::class, 'election_id');
     }
+
+    /**
+     * Votes
+     * many to many
+     * 
+     */
+    public function getVotesAttribute()
+    { $votes = 0;
+        foreach ($this->offices as $office) {
+           foreach ($office->candidates as $candidate) {
+               $votes += $candidate->votes->count();
+           } 
+        }
+        return $votes;
+    }
 }
