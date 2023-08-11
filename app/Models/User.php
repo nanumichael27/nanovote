@@ -84,6 +84,6 @@ class User extends Authenticatable implements FilamentUser
      */
     public function hasVoted(Election $election)
     {
-        return $this->votes? true : false;
+        return $this->votes->count() == $election->offices->count();
     }
 }
