@@ -53,9 +53,9 @@ jobs:
           cd sac.sendrave.com
           composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --ignore-platform-reqs 
           php artisan storage:link
-          php artisan key:generate
-          php artisan migrate:fresh --force --seed
-          php artisan optimize:clear
+          # php artisan key:generate
+          # php artisan migrate:fresh --force --seed
+          # php artisan optimize:clear
           
           
           
