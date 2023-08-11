@@ -18,7 +18,7 @@
             <h3 class="text-3xl font-extrabold">{{$office->title}}</h3>
             <div class="grid lg:grid-cols-3 sm:grid-cols-1 gap-2 text-center">
                 @foreach ($office->candidates as $candidate)
-                <div class="bg-white rounded-lg px-5 py-16 my-3 cursor-pointer active:bg-green-300 {{(isset($votes[$office->id]) && $votes[$office->id] == $candidate->id)? 'bg-green-600' : 'hover:bg-green-100'}}"
+                <div class="bg-white rounded-lg px-5 py-16 my-3 cursor-pointer active:bg-green-300  {{(isset($votes[$office->id]) && $votes[$office->id] == $candidate->id)? 'bg-green-500' : 'hover:bg-green-100'}}"
                     wire:click="castVote({{$office->id}}, {{$candidate->id}})">
                     <div><img src="{{$candidate->getFirstMediaUrl('images')}}"
                             class="w-2/3 mx-auto my-0 rounded-2xl shadow-lg" alt=""></div>
