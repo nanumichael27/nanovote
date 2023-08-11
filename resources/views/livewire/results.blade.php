@@ -1,6 +1,6 @@
 <div wire:poll>
     <div class="text-4xl text-center text-black p-5">Election: {{$election->title}}</div>
-    <div class="grid grid-cols-3 sm:grid-cols-1">
+    <div class="grid lg:grid-cols-3 sm:grid-cols-1 ">
         <div class="min-h-5 bg-white rounded p-12 text-2xl font-bold shadow-lg">
             Total Votes Casted: {{$election->votes}}
         </div>
