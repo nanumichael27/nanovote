@@ -20,8 +20,8 @@ class VotingPanel extends Component
     public function mount() {
         $this->step = 0;
         $voter = auth()->user();
-        $this->election = $voter->election;
-        $this->office = $this->election->offices[$this->step];
+        $this->election = $voter?->election;
+        $this->office = $this->election?->offices[$this->step];
     }
 
     public function nextStep() {
@@ -31,7 +31,7 @@ class VotingPanel extends Component
             $this->dispatch('alert', 
                 ['type' => 'info',  'message' => 'Kindly click on the finish button to submit']);
         }
-        $this->office = $this->election->offices[$this->step];
+        $this->office = $this->election?->offices[$this->step];
 
     }
 
@@ -39,7 +39,7 @@ class VotingPanel extends Component
         if($this->step > 0) {
             $this->step--;
         }
-        $this->office = $this->election->offices[$this->step];
+        $this->office = $this->election?->offices[$this->step];
     }
     public function castVote($office, $candidate) {
         $this->votes[$office] = $candidate;
