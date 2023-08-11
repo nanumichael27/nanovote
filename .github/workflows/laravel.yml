@@ -56,6 +56,7 @@ jobs:
           php artisan key:generate
           php artisan migrate:fresh --force --seed
           php artisan optimize:clear
+          npm run build
           
           
           
