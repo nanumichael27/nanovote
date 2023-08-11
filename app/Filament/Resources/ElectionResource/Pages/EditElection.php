@@ -42,7 +42,9 @@ class EditElection extends EditRecord
                 
             }),
             Action::make('Download Voter Codes')
-            ->url(fn (Election $election) => route('codes.download', $election))
+            ->url(fn (Election $election) => route('codes.download', $election)),
+            Action::make('Results')
+            ->url(fn (Election $election) => route('results', $election)),
         ];
     }
 }
