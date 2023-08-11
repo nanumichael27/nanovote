@@ -41,6 +41,8 @@ class EditElection extends EditRecord
                 ->send();
                 
             }),
+            Action::make('Download Voter Codes')
+            ->url(fn (Election $election) => route('codes.download', $election))
         ];
     }
 }

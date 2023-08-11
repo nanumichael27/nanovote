@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\Election;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::redirect('/', '/voter-login', 301);
+
+Route::get('/codes/{id}', function($id){
+    $election = Election::findOrFail($id);
+    $voters = $election->voters;
+    $pdf = Pdf::loadView('codes', compact('voters'));
+    return $pdf->download('codes.pdf');
+})->name('codes.download');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
