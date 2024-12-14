@@ -17,21 +17,26 @@ class VotingPanel extends Component
 
     public $votes = [];
 
+    public $offices;
+
     public function mount() {
         $this->step = 0;
         $voter = auth()->user();
-        $this->election = $voter?->election;
-        $this->office = $this->election?->offices[$this->step];
+        $this->election = $voter?->election()->with('offices.candidates')->first();
+        // Preload offices for this election
+        $this->offices = $this->election?->offices;
+
+        $this->office = $this->offices[$this->step] ?? null;
     }
 
     public function nextStep() {
-        if($this->step < $this->election->offices->count() - 1) {
+        if($this->step < $this->offices->count() - 1) {
             $this->step++;
         }else{
             $this->dispatch('alert', 
                 ['type' => 'info',  'message' => 'Kindly click on the finish button to submit']);
         }
-        $this->office = $this->election?->offices[$this->step];
+        $this->office = $this->offices[$this->step] ?? null;
 
     }
 
@@ -39,7 +44,7 @@ class VotingPanel extends Component
         if($this->step > 0) {
             $this->step--;
         }
-        $this->office = $this->election?->offices[$this->step];
+        $this->office = $this->offices[$this->step] ?? null;
     }
     public function castVote($office, $candidate) {
         $this->votes[$office] = $candidate;
